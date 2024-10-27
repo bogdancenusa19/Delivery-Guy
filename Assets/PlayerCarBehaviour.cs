@@ -20,18 +20,37 @@ public class PlayerCarBehavior : CarBehavior
     {
         base.Update();
 
-        // Controlează boost-ul prin input
-        if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
+        Debug.Log("Stamina is: " + stamina);
+        // Verifică obstacolele în față și frânează prioritar
+        float obstacleDistance;
+        if (IsObstacleInFront(out obstacleDistance) && obstacleDistance < minDistanceToBrake)
         {
-            StartBoost();
+            //Debug.Log($"{gameObject.name} is braking due to close obstacle at distance: {obstacleDistance}");
+            Brake();
         }
-        else if (boostUsed)
+        else
         {
-            StopBoost();
+            // Dacă nu există obstacole, accelerează treptat până la viteza inițială
+            if (currentSpeed < forwardSpeed)
+            {
+                AccelerateToDefault();
+            }
+
+            // Controlează boost-ul prin input doar dacă nu există obstacole în față
+            if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
+            {
+                StartBoost();
+            }
+            else if (boostUsed)
+            {
+                StopBoost();
+            }
         }
 
         HandleCooldownAndRecharge();
     }
+
+
 
     private void StartBoost()
     {
@@ -50,32 +69,38 @@ public class PlayerCarBehavior : CarBehavior
         boostUsed = false;
         currentSpeed = forwardSpeed;
 
-        if (stamina <= 0f)
-        {
-            boostCooldownTimer = cooldownTime;
-            cooldownActive = true;
-        }
-
-        // Setează ținta direct pe banda inițială
+        // Setează ținta pentru revenirea pe banda inițială
         SetTargetLanePosition(0f);
 
-        // Frânează și prioritizează revenirea pe banda inițială dacă este ocupată
+        // Frânează dacă banda este ocupată și setează cooldown-ul activ
         if (!IsLaneClear())
         {
             Brake();
         }
+
+        // Activează cooldown-ul, dar reîncărcarea efectivă va începe doar după revenirea pe bandă
+        cooldownActive = true;
+        boostCooldownTimer = cooldownTime;
     }
 
     private void HandleCooldownAndRecharge()
     {
-        if (cooldownActive)
+        // Verifică dacă playerul a revenit pe banda inițială înainte de a reîncărca stamina
+        if (transform.position.x == originalLanePosition.x && cooldownActive)
         {
             boostCooldownTimer -= Time.deltaTime;
-            if (boostCooldownTimer <= 0f)
+
+            // Reîncarcă stamina progresiv
+            stamina = Mathf.Min(stamina + Time.deltaTime, boostDuration);
+
+            // Dezactivează cooldown-ul dacă stamina este complet reîncărcată
+            if (boostCooldownTimer <= 0f || stamina >= boostDuration)
             {
                 cooldownActive = false;
-                stamina = boostDuration;
+                stamina = boostDuration; // Asigură că stamina este complet încărcată
             }
         }
     }
+
+
 }

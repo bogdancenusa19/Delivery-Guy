@@ -40,14 +40,18 @@ public class NPCarBehavior : CarBehavior
         {
             if (distance < stopDistance)
             {
-                Debug.Log($"{gameObject.name} is braking completely because a vehicle is very close.");
-                Brake(); // Frânează complet dacă obstacolul este foarte aproape
+                Debug.Log($"{gameObject.name} is braking immediately due to a very close obstacle.");
+                currentSpeed = 0; // Oprire completă dacă obstacolul este extrem de aproape
             }
             else if (distance < minDistanceToBrake && currentSpeed > forwardSpeed && IsLaneClear())
             {
-                // Dacă NPC-ul are o viteză mai mare decât vehiculul din față și banda opusă este liberă, încearcă să depășească
                 Debug.Log($"{gameObject.name} is changing lane to avoid the obstacle.");
-                SetTargetLanePosition(laneOffset); // Încearcă să schimbe banda pentru a depăși obstacolul
+                SetTargetLanePosition(laneOffset); // Schimbă banda pentru a depăși
+            }
+            else if (distance < minDistanceToBrake)
+            {
+                Debug.Log($"{gameObject.name} is braking progressively.");
+                Brake(); // Frânare treptată pentru a menține o distanță de siguranță
             }
         }
         else
@@ -62,4 +66,5 @@ public class NPCarBehavior : CarBehavior
             AccelerateToDefault();
         }
     }
+
 }

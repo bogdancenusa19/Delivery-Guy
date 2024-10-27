@@ -44,21 +44,59 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected bool IsObstacleInFront(out float distance)
     {
-        RaycastHit hit;
-        Vector3 raycastStart = transform.position;
+        RaycastHit hitCenter;
+        RaycastHit hitLeft;
+        RaycastHit hitRight;
 
-        if (Physics.Raycast(raycastStart, transform.forward, out hit, detectionRange))
+        distance = detectionRange;
+        bool obstacleDetected = false;
+
+        // Definim punctele de pornire pentru cele trei raze: centru, stânga și dreapta
+        Vector3 raycastStartCenter = transform.position;
+        Vector3 raycastStartLeft = transform.position + Vector3.left * 0.5f;
+        Vector3 raycastStartRight = transform.position + Vector3.right * 0.5f;
+
+        // Verificăm pentru fiecare rază dacă există obstacole
+        if (Physics.Raycast(raycastStartCenter, transform.forward, out hitCenter, detectionRange))
         {
-            if (hit.collider.CompareTag("Vehicle"))
+            //Debug.Log($"{gameObject.name} center ray hit {hitCenter.collider.tag} at distance {hitCenter.distance}");
+            if (hitCenter.collider.CompareTag("Vehicle") || hitCenter.collider.CompareTag("Player"))
             {
-                distance = hit.distance;
-                return true;
+                distance = hitCenter.distance;
+                obstacleDetected = true;
             }
         }
 
-        distance = 0f;
-        return false;
+        if (Physics.Raycast(raycastStartLeft, transform.forward, out hitLeft, detectionRange))
+        {
+            //Debug.Log($"{gameObject.name} left ray hit {hitLeft.collider.tag} at distance {hitLeft.distance}");
+            if (hitLeft.collider.CompareTag("Vehicle") || hitLeft.collider.CompareTag("Player"))
+            {
+                distance = Mathf.Min(distance, hitLeft.distance);
+                obstacleDetected = true;
+            }
+        }
+
+        if (Physics.Raycast(raycastStartRight, transform.forward, out hitRight, detectionRange))
+        {
+            //Debug.Log($"{gameObject.name} right ray hit {hitRight.collider.tag} at distance {hitRight.distance}");
+            if (hitRight.collider.CompareTag("Vehicle") || hitRight.collider.CompareTag("Player"))
+            {
+                distance = Mathf.Min(distance, hitRight.distance);
+                obstacleDetected = true;
+            }
+        }
+
+        if (!obstacleDetected)
+        {
+            //Debug.Log($"{gameObject.name} found no obstacles in front.");
+        }
+
+        return obstacleDetected;
     }
+
+
+
 
     protected bool IsLaneClear()
     {
@@ -78,8 +116,9 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected void AccelerateToDefault()
     {
-        currentSpeed = Mathf.Min(forwardSpeed, currentSpeed + brakeStrength * Time.deltaTime);
+        currentSpeed = Mathf.Min(currentSpeed + brakeStrength * Time.deltaTime, forwardSpeed);
     }
+
 
     protected void SetTargetLanePosition(float offset)
     {
