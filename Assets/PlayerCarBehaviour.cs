@@ -19,13 +19,12 @@ public class PlayerCarBehavior : CarBehavior
     protected override void Update()
     {
         base.Update();
-
-        Debug.Log("Stamina is: " + stamina);
+        
         // Verifică obstacolele în față și frânează prioritar
         float obstacleDistance;
         if (IsObstacleInFront(out obstacleDistance) && obstacleDistance < minDistanceToBrake)
         {
-            //Debug.Log($"{gameObject.name} is braking due to close obstacle at distance: {obstacleDistance}");
+            Debug.Log($"{gameObject.name} is braking due to close obstacle at distance: {obstacleDistance}");
             Brake();
         }
         else
@@ -35,16 +34,16 @@ public class PlayerCarBehavior : CarBehavior
             {
                 AccelerateToDefault();
             }
-
-            // Controlează boost-ul prin input doar dacă nu există obstacole în față
-            if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
-            {
-                StartBoost();
-            }
-            else if (boostUsed)
-            {
-                StopBoost();
-            }
+        }
+        
+        // Controlează boost-ul prin input doar dacă nu există obstacole în față
+        if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
+        {
+            StartBoost();
+        }
+        else if (boostUsed)
+        {
+            StopBoost();
         }
 
         HandleCooldownAndRecharge();
