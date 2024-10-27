@@ -6,6 +6,7 @@ public class NPCarBehavior : CarBehavior
     public float behaviorChangeInterval = 5f;
     public float minSpeed;
     public float maxSpeed;
+    private bool isBrakingTemporarily = false;
 
     protected override void Start()
     {
@@ -36,12 +37,12 @@ public class NPCarBehavior : CarBehavior
     private void HandleTraffic()
     {
         float distance;
-        if (IsObstacleInFront(out distance))
+        if (IsObstacleInFront(out distance) || IsPlayerOnLeft()) // Verifică obstacolele în față sau playerul în stânga
         {
-            if (distance < stopDistance)
+            if (distance < stopDistance || IsPlayerOnLeft()) // Aplică frânarea și pentru playerul din stânga
             {
-                Debug.Log($"{gameObject.name} is braking immediately due to a very close obstacle.");
-                currentSpeed = 0; // Oprire completă dacă obstacolul este extrem de aproape
+                Debug.Log($"{gameObject.name} is braking immediately due to a close obstacle or player on the left.");
+                currentSpeed = 0; // Oprire completă dacă obstacolul este extrem de aproape sau dacă playerul este în stânga
             }
             else if (distance < minDistanceToBrake && currentSpeed > forwardSpeed && IsLaneClear())
             {
@@ -67,4 +68,20 @@ public class NPCarBehavior : CarBehavior
         }
     }
 
+    private bool IsPlayerOnLeft()
+    {
+        RaycastHit hit;
+        Vector3 raycastStart = transform.position + Vector3.left * 0.5f; // Verifică în lateral stânga
+
+        // Lansează un Raycast către stânga pentru a verifica dacă există un vehicul (playerul) în apropiere
+        if (Physics.Raycast(raycastStart, Vector3.left, out hit, 2f)) // Folosim o distanță de 2 unități pentru detecție laterală
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log($"{gameObject.name} detected player on the left at distance {hit.distance}");
+                return true;
+            }
+        }
+        return false;
+    }
 }
