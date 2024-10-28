@@ -30,7 +30,7 @@ public class PlayerCarBehavior : CarBehavior
         else
         {
             // Dacă nu există obstacole, accelerează treptat până la viteza inițială
-            if (currentSpeed < forwardSpeed)
+            if (currentSpeed < forwardSpeed && !IsVehicleOnRight(5f))
             {
                 AccelerateToDefault();
             }
@@ -40,13 +40,19 @@ public class PlayerCarBehavior : CarBehavior
         if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
         {
             StartBoost();
+            isOvertakingDone = false;
         }
         else if (boostUsed)
         {
             StopBoost();
+            isOvertakingDone = true;
         }
 
+        if(isOvertakingDone)
+            ReturnToLane();
+        
         HandleCooldownAndRecharge();
+        
     }
 
 
@@ -68,18 +74,24 @@ public class PlayerCarBehavior : CarBehavior
         boostUsed = false;
         currentSpeed = forwardSpeed;
 
-        // Setează ținta pentru revenirea pe banda inițială
-        SetTargetLanePosition(0f);
-
-        // Frânează dacă banda este ocupată și setează cooldown-ul activ
-        if (!IsLaneClear())
-        {
-            Brake();
-        }
-
-        // Activează cooldown-ul, dar reîncărcarea efectivă va începe doar după revenirea pe bandă
+        // Activează cooldown-ul pentru reîncărcare după ce s-a retras pe bandă
         cooldownActive = true;
         boostCooldownTimer = cooldownTime;
+    }
+
+    private void ReturnToLane()
+    {
+        // Dacă există un vehicul în dreapta, aplică frânarea și așteaptă
+        if (IsVehicleOnRight(5f)) // Folosim o distanță de 2 unități pentru detecția vehiculelor din dreapta
+        {
+            Debug.Log($"{gameObject.name} is braking because there's a vehicle on the right, waiting to return to the lane.");
+            Brake(); // Aplică frânarea pentru a evita revenirea pe banda inițială
+        }
+        else
+        {
+            // Dacă nu există vehicul în dreapta, revine pe banda inițială
+            SetTargetLanePosition(0f);
+        }
     }
 
     private void HandleCooldownAndRecharge()

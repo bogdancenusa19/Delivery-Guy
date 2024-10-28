@@ -14,6 +14,7 @@ public abstract class CarBehavior : MonoBehaviour
     protected Vector3 originalLanePosition;
     protected Vector3 targetLanePosition;
     protected float currentSpeed;
+    protected bool isOvertakingDone = false;
 
     protected virtual void Start()
     {
@@ -94,10 +95,7 @@ public abstract class CarBehavior : MonoBehaviour
 
         return obstacleDetected;
     }
-
-
-
-
+    
     protected bool IsLaneClear()
     {
         RaycastHit hit;
@@ -124,4 +122,23 @@ public abstract class CarBehavior : MonoBehaviour
     {
         targetLanePosition = new Vector3(originalLanePosition.x + offset, transform.position.y, transform.position.z);
     }
+    
+    protected bool IsVehicleOnRight(float detectionDistance)
+    {
+        RaycastHit hit;
+        Vector3 raycastStart = transform.position;
+        Vector3 rayDirection = Vector3.right;
+
+        // Lansează un Raycast către dreapta pentru a verifica dacă există un vehicul
+        if (Physics.Raycast(raycastStart, rayDirection, out hit, detectionDistance))
+        {
+            if (hit.collider.CompareTag("Vehicle"))
+            {
+                Debug.Log($"{gameObject.name} detected a vehicle on the right at distance {hit.distance}");
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
