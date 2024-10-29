@@ -40,12 +40,10 @@ public class PlayerCarBehavior : CarBehavior
         if (Input.GetMouseButton(0) && stamina > 0 && !cooldownActive)
         {
             StartBoost();
-            isOvertakingDone = false;
         }
         else if (boostUsed)
         {
             StopBoost();
-            isOvertakingDone = true;
         }
 
         if(isOvertakingDone)
@@ -64,12 +62,18 @@ public class PlayerCarBehavior : CarBehavior
         stamina -= Time.deltaTime;
         currentSpeed = boostSpeed;
 
-        // Setează ținta pe contrasens
-        SetTargetLanePosition(laneOffset);
+        float distance;
+        if (IsObstacleInFront(out distance))
+        {
+            // Setează ținta pe contrasens
+            isOvertakingDone = false;
+            SetTargetLanePosition(laneOffset);
+        }
     }
 
     private void StopBoost()
     {
+        isOvertakingDone = true;
         isBoosting = false;
         boostUsed = false;
         currentSpeed = forwardSpeed;
