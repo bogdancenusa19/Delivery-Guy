@@ -54,8 +54,8 @@ public abstract class CarBehavior : MonoBehaviour
 
         // Definim punctele de pornire pentru cele trei raze: centru, stânga și dreapta
         Vector3 raycastStartCenter = transform.position;
-        Vector3 raycastStartLeft = transform.position + Vector3.left * 0.5f;
-        Vector3 raycastStartRight = transform.position + Vector3.right * 0.5f;
+        Vector3 raycastStartLeft = transform.position + Vector3.left * 2f;
+        Vector3 raycastStartRight = transform.position + Vector3.right * 2f;
 
         // Verificăm pentru fiecare rază dacă există obstacole
         if (Physics.Raycast(raycastStartCenter, transform.forward, out hitCenter, detectionRange))
@@ -90,7 +90,7 @@ public abstract class CarBehavior : MonoBehaviour
 
         if (!obstacleDetected)
         {
-            //Debug.Log($"{gameObject.name} found no obstacles in front.");
+            Debug.Log($"{gameObject.name} found no obstacles in front.");
         }
 
         return obstacleDetected;
@@ -125,20 +125,47 @@ public abstract class CarBehavior : MonoBehaviour
     
     protected bool IsVehicleOnRight(float detectionDistance)
     {
-        RaycastHit hit;
-        Vector3 raycastStart = transform.position;
-        Vector3 rayDirection = Vector3.right;
+        RaycastHit hitFront;
+        RaycastHit hitBack;
+    
+        // Pozițiile de start pentru Raycast-uri
+        Vector3 raycastStartFront = transform.position + transform.forward * 1.5f + Vector3.right * 0.5f;
+        Vector3 raycastStartBack = transform.position - transform.forward * 1.5f + Vector3.right * 0.5f;
 
-        // Lansează un Raycast către dreapta pentru a verifica dacă există un vehicul
-        if (Physics.Raycast(raycastStart, rayDirection, out hit, detectionDistance))
+        // Lansează Raycast-ul din față
+        bool frontHit = Physics.Raycast(raycastStartFront, Vector3.right, out hitFront, detectionDistance) && hitFront.collider.CompareTag("Vehicle");
+
+        // Lansează Raycast-ul din spate
+        bool backHit = Physics.Raycast(raycastStartBack, Vector3.right, out hitBack, detectionDistance) && hitBack.collider.CompareTag("Vehicle");
+
+        // Verifică dacă oricare dintre Raycast-uri a detectat un vehicul
+        if (frontHit || backHit)
         {
-            if (hit.collider.CompareTag("Vehicle"))
-            {
-                Debug.Log($"{gameObject.name} detected a vehicle on the right at distance {hit.distance}");
-                return true;
-            }
+            Debug.Log($"{gameObject.name} detected a vehicle on the right at distance {detectionDistance}");
+            return true;
         }
+
         return false;
     }
+
+    protected virtual void OnDrawGizmos()
+    {
+
+        // Definim punctele de pornire pentru cele trei raze: centru, stânga și dreapta
+        Vector3 raycastStartCenter = transform.position + transform.forward * 3f;
+        Vector3 raycastStartLeft = transform.position + Vector3.left * 2f + transform.forward * 3f;
+        Vector3 raycastStartRight = transform.position + Vector3.right * 2f + transform.forward * 3f;
+
+        // Setăm culori pentru fiecare rază
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(raycastStartCenter, raycastStartCenter + transform.forward * detectionRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(raycastStartLeft, raycastStartLeft + transform.forward * detectionRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(raycastStartRight, raycastStartRight + transform.forward * detectionRange);
+    }
+
     
 }

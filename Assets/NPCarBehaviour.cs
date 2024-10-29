@@ -8,6 +8,8 @@ public class NPCarBehavior : CarBehavior
     public float maxSpeed;
     private bool isBrakingTemporarily = false;
 
+    [SerializeField] private GameObject frontCarDetector;
+
     protected override void Start()
     {
         base.Start();
@@ -44,11 +46,6 @@ public class NPCarBehavior : CarBehavior
                 Debug.Log($"{gameObject.name} is braking immediately due to a close obstacle or player on the left.");
                 currentSpeed = 0; // Oprire completă dacă obstacolul este extrem de aproape sau dacă playerul este în stânga
             }
-            else if (distance < minDistanceToBrake && currentSpeed > forwardSpeed && IsLaneClear())
-            {
-                Debug.Log($"{gameObject.name} is changing lane to avoid the obstacle.");
-                SetTargetLanePosition(laneOffset); // Schimbă banda pentru a depăși
-            }
             else if (distance < minDistanceToBrake)
             {
                 Debug.Log($"{gameObject.name} is braking progressively.");
@@ -57,12 +54,6 @@ public class NPCarBehavior : CarBehavior
         }
         else
         {
-            // Dacă nu există obstacole, revine la banda inițială
-            if (targetLanePosition.x != originalLanePosition.x)
-            {
-                SetTargetLanePosition(0f); // Revine pe banda inițială
-            }
-
             // Revine la viteza normală dacă drumul e liber
             AccelerateToDefault();
         }
@@ -71,10 +62,10 @@ public class NPCarBehavior : CarBehavior
     private bool IsPlayerOnLeft()
     {
         RaycastHit hit;
-        Vector3 raycastStart = transform.position + Vector3.left * 0.5f; // Verifică în lateral stânga
+        Vector3 raycastStart = frontCarDetector.transform.position + Vector3.left * 0.5f; // Verifică în lateral stânga
 
         // Lansează un Raycast către stânga pentru a verifica dacă există un vehicul (playerul) în apropiere
-        if (Physics.Raycast(raycastStart, Vector3.left, out hit, 2f)) // Folosim o distanță de 2 unități pentru detecție laterală
+        if (Physics.Raycast(raycastStart, Vector3.left, out hit, 3f)) // Folosim o distanță de 2 unități pentru detecție laterală
         {
             if (hit.collider.CompareTag("Player"))
             {
