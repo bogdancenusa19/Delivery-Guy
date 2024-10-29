@@ -122,64 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &124579904
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 124579905}
-  m_Layer: 0
-  m_Name: Front Car Detector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &124579905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124579904}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12400001, z: 0.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1613269518}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &198203086 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1811311075122479050}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &198203090
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198203086}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,78 +294,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &378073787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 378073789}
-  - component: {fileID: 378073788}
-  m_Layer: 0
-  m_Name: Virtual Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &378073788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378073787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExcludedPropertiesInInspector:
-  - m_Script
-  m_LockStageInInspector: 
-  m_StreamingVersion: 20170927
-  m_Priority: 10
-  m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1934598155}
-  m_Lens:
-    FieldOfView: 60.000004
-    OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
-    Dutch: 0
-    ModeOverride: 0
-    LensShift: {x: 0, y: 0}
-    GateFit: 2
-    FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
-  m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
-    m_OnCameraLive:
-      m_PersistentCalls:
-        m_Calls: []
-  m_LegacyBlendHint: 0
-  m_ComponentOwner: {fileID: 2066399126}
---- !u!4 &378073789
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378073787}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.2583445, y: -0.0025984494, z: 0.00069441175, w: 0.96604913}
-  m_LocalPosition: {x: 2.8, y: 21.53, z: -31.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2066399126}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,150 +636,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1212171865 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3476358114886988075, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1811311075122479050}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1613269518 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 625198775798040946, guid: 6b999e0d8fa46b94c8ea078122f54154,
-    type: 3}
-  m_PrefabInstance: {fileID: 6686266921890820375}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1934598155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
     type: 3}
   m_PrefabInstance: {fileID: 123837076661363122}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2014661833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2014661834}
-  m_Layer: 0
-  m_Name: Front Car Detector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2014661834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014661833}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025999963, z: 0.79}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1212171865}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2066399125
-GameObject:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2066399126}
-  - component: {fileID: 2066399129}
-  - component: {fileID: 2066399128}
-  - component: {fileID: 2066399127}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2066399126
-Transform:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066399125}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 378073789}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2066399127
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066399125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 20.33, z: -18.97}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
-  m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
-  m_AngularDamping: 0
---- !u!114 &2066399128
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066399125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
---- !u!114 &2066399129
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066399125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2120665830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,26 +812,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
-        type: 3}
-      propertyPath: stopDistance
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
-        type: 3}
-      propertyPath: detectionRange
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
-        type: 3}
-      propertyPath: laneChangeDuration
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
-        type: 3}
-      propertyPath: minDistanceToBrake
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1163,36 +875,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: stopDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: detectionRange
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: frontCarDetector
-      value: 
-      objectReference: {fileID: 2014661833}
-    - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: minDistanceToBrake
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1038733918249918749, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.624
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Animator
-      objectReference: {fileID: 0}
     - target: {fileID: 3476358114886988075, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1248,29 +930,84 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back NPC Car
       objectReference: {fileID: 0}
-    - target: {fileID: 7488144828799418619, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.7643476
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488144828799418619, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.29031217
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3476358114886988075, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2014661834}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 198203090}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3027b9e6068f5c44afe24fc2397b1ce, type: 3}
+--- !u!1001 &2490238221208129477
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 21.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.96604913
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2583445
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0025984494
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00069441175
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 641776292940047068, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701335380480948395, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_Name
+      value: Virtual Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7741233207196050672, guid: 7064a60623e038f4c98e42302831c928,
+        type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1934598155}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7064a60623e038f4c98e42302831c928, type: 3}
 --- !u!1001 &6686266921890820375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1329,58 +1066,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4891210693780999691, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.5985742
-      objectReference: {fileID: 0}
-    - target: {fileID: 4891210693780999691, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.67288935
-      objectReference: {fileID: 0}
     - target: {fileID: 6075021429014397595, guid: 6b999e0d8fa46b94c8ea078122f54154,
         type: 3}
       propertyPath: m_Name
       value: Front NPC Car
       objectReference: {fileID: 0}
-    - target: {fileID: 7830321609329163525, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.606
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: stopDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: detectionRange
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: frontCarDetector
-      value: 
-      objectReference: {fileID: 124579904}
-    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: minDistanceToBrake
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761884893095035791, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      propertyPath: m_Name
-      value: Animator
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 625198775798040946, guid: 6b999e0d8fa46b94c8ea078122f54154,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 124579905}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b999e0d8fa46b94c8ea078122f54154, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -1395,5 +1088,5 @@ SceneRoots:
   - {fileID: 1811311075122479050}
   - {fileID: 6686266921890820375}
   - {fileID: 2120665834}
-  - {fileID: 378073789}
+  - {fileID: 2490238221208129477}
   - {fileID: 653301373}

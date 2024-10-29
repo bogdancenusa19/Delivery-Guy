@@ -65,7 +65,7 @@ public class NPCarBehavior : CarBehavior
         Vector3 raycastStart = frontCarDetector.transform.position + Vector3.left * 0.5f; // Verifică în lateral stânga
 
         // Lansează un Raycast către stânga pentru a verifica dacă există un vehicul (playerul) în apropiere
-        if (Physics.Raycast(raycastStart, Vector3.left, out hit, 3f)) // Folosim o distanță de 2 unități pentru detecție laterală
+        if (Physics.Raycast(raycastStart, Vector3.left, out hit, 5f)) // Folosim o distanță de 5 unități pentru detecție laterală
         {
             if (hit.collider.CompareTag("Player"))
             {

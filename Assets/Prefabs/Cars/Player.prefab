@@ -98,11 +98,11 @@ MonoBehaviour:
   forwardSpeed: 10
   boostSpeed: 20
   laneOffset: -5
-  detectionRange: 10
+  detectionRange: 15
   laneChangeDuration: 3
   brakeStrength: 5
   minDistanceToBrake: 12
-  stopDistance: 10
+  stopDistance: 8
   boostDuration: 2
   cooldownTime: 1
 --- !u!1 &704223027683988392

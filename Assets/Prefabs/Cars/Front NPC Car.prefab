@@ -533,6 +533,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7830321609329163525}
+  - {fileID: 8609743914766179655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4891210693780999691
@@ -554,8 +555,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2.6157892, z: 5.1230392}
-  m_Center: {x: 0, y: 1.3132428, z: 0.09776497}
+  m_Size: {x: 2, y: 2.5985742, z: 5.1230392}
+  m_Center: {x: 0, y: 0.67288935, z: 0.09776497}
 --- !u!114 &8436359828797310808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,14 +572,15 @@ MonoBehaviour:
   forwardSpeed: 10
   boostSpeed: 20
   laneOffset: -5
-  detectionRange: 10
+  detectionRange: 15
   laneChangeDuration: 1
   brakeStrength: 5
-  minDistanceToBrake: 10
-  stopDistance: 8
+  minDistanceToBrake: 12
+  stopDistance: 5
   behaviorChangeInterval: 5
   minSpeed: 1
   maxSpeed: 1
+  frontCarDetector: {fileID: 7145617178588187309}
 --- !u!54 &4858562484826915430
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -938,6 +940,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7145617178588187309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8609743914766179655}
+  m_Layer: 0
+  m_Name: Front Car Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8609743914766179655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145617178588187309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.12400001, z: 0.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 625198775798040946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8226636294987356021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +1066,7 @@ GameObject:
   - component: {fileID: 7727191443696607166}
   - component: {fileID: 4884187200450320904}
   m_Layer: 0
-  m_Name: SM_Veh_Car_Ambo_01
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,7 +1081,7 @@ Transform:
   m_GameObject: {fileID: 8761884893095035791}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.606, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

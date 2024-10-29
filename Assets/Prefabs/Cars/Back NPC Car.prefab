@@ -94,8 +94,9 @@ GameObject:
   - component: {fileID: 1038733918249918749}
   - component: {fileID: 7890583672121619888}
   - component: {fileID: 8353947535725825836}
+  - component: {fileID: 7100972082104231134}
   m_Layer: 0
-  m_Name: SM_Veh_Car_Taxi_01
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1915800302347878547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.624, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,6 +174,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &7100972082104231134
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915800302347878547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2026478045544658374
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +726,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1038733918249918749}
+  - {fileID: 771184603911300819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7488144828799418619
@@ -725,8 +748,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.606936, z: 5.1129937}
-  m_Center: {x: 0, y: 0.8213048, z: 0.13648391}
+  m_Size: {x: 2, y: 1.7643476, z: 5.1129937}
+  m_Center: {x: 0, y: 0.29031217, z: 0.13648391}
 --- !u!114 &555197382426355495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,14 +765,15 @@ MonoBehaviour:
   forwardSpeed: 10
   boostSpeed: 20
   laneOffset: -5
-  detectionRange: 10
+  detectionRange: 20
   laneChangeDuration: 1
   brakeStrength: 5
-  minDistanceToBrake: 10
-  stopDistance: 8
+  minDistanceToBrake: 15
+  stopDistance: 5
   behaviorChangeInterval: 5
   minSpeed: 10
   maxSpeed: 10
+  frontCarDetector: {fileID: 6353737300178164419}
 --- !u!54 &6452159085116566546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -777,3 +801,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!1 &6353737300178164419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 771184603911300819}
+  m_Layer: 0
+  m_Name: Front Car Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771184603911300819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353737300178164419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.025999963, z: 0.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3476358114886988075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
