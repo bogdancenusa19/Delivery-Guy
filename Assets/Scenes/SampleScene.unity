@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 124579904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12400001, z: 0.97}
+  m_LocalPosition: {x: 0, y: 0.12400001, z: 0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2583445, y: -0.0025984494, z: 0.00069441175, w: 0.96604913}
-  m_LocalPosition: {x: 2.8, y: 21.53, z: -19.75}
+  m_LocalPosition: {x: 2.8, y: 21.53, z: -31.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 378073787}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2583445, y: -0.0025984494, z: 0.00069441175, w: 0.96604913}
-  m_LocalPosition: {x: 2.8, y: 21.53, z: -19.75}
+  m_LocalPosition: {x: 2.8, y: 21.53, z: -31.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -987,7 +987,12 @@ PrefabInstance:
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: stopDistance
-      value: 30
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
+        type: 3}
+      propertyPath: detectionRange
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
@@ -997,7 +1002,7 @@ PrefabInstance:
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: minDistanceToBrake
-      value: 32
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
@@ -1012,7 +1017,7 @@ PrefabInstance:
     - target: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.78
+      value: -12.75
       objectReference: {fileID: 0}
     - target: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
@@ -1065,7 +1070,12 @@ PrefabInstance:
     - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
       propertyPath: stopDistance
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
+        type: 3}
+      propertyPath: detectionRange
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
@@ -1075,7 +1085,7 @@ PrefabInstance:
     - target: {fileID: 555197382426355495, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
       propertyPath: minDistanceToBrake
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1038733918249918749, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
@@ -1236,9 +1246,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
         type: 3}
+      propertyPath: stopDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
+        type: 3}
+      propertyPath: detectionRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
+        type: 3}
       propertyPath: frontCarDetector
       value: 
       objectReference: {fileID: 124579904}
+    - target: {fileID: 8436359828797310808, guid: 6b999e0d8fa46b94c8ea078122f54154,
+        type: 3}
+      propertyPath: minDistanceToBrake
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
