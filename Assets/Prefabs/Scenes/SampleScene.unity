@@ -153,6 +153,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1613269518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &198203086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 1811311075122479050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &198203090
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198203086}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1188,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.624
       objectReference: {fileID: 0}
+    - target: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
+        type: 3}
+      propertyPath: m_Name
+      value: Animator
+      objectReference: {fileID: 0}
     - target: {fileID: 3476358114886988075, guid: a3027b9e6068f5c44afe24fc2397b1ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1233,7 +1265,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2014661834}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1915800302347878547, guid: a3027b9e6068f5c44afe24fc2397b1ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 198203090}
   m_SourcePrefab: {fileID: 100100000, guid: a3027b9e6068f5c44afe24fc2397b1ce, type: 3}
 --- !u!1001 &6686266921890820375
 PrefabInstance:
@@ -1332,6 +1368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minDistanceToBrake
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761884893095035791, guid: 6b999e0d8fa46b94c8ea078122f54154,
+        type: 3}
+      propertyPath: m_Name
+      value: Animator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
