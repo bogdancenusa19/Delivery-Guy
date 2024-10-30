@@ -185,6 +185,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Back NPC Car
       objectReference: {fileID: 0}
+    - target: {fileID: 6353737300178164419, guid: a3027b9e6068f5c44afe24fc2397b1ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -658,6 +663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: stopDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
+        type: 3}
+      propertyPath: boostDuration
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
