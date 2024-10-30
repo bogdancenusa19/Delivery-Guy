@@ -86,7 +86,7 @@ public class PlayerCarBehavior : CarBehavior
     private void ReturnToLane()
     {
         // Dacă există un vehicul în dreapta, aplică frânarea și așteaptă
-        if (IsVehicleOnRight(6f)) // Folosim o distanță de 6 unități pentru detecția vehiculelor din dreapta
+        if (IsVehicleOnRight(7f)) // Folosim o distanță de 6 unități pentru detecția vehiculelor din dreapta
         {
             Debug.Log($"{gameObject.name} is braking because there's a vehicle on the right, waiting to return to the lane.");
             Brake(); // Aplică frânarea pentru a evita revenirea pe banda inițială
