@@ -129,8 +129,8 @@ public abstract class CarBehavior : MonoBehaviour
         RaycastHit hitBack;
     
         // Pozițiile de start pentru Raycast-uri
-        Vector3 raycastStartFront = transform.position + transform.forward * 2.5f + Vector3.right * .5f;
-        Vector3 raycastStartBack = transform.position - transform.forward * 2.5f + Vector3.right * .5f;
+        Vector3 raycastStartFront = transform.position + transform.forward * 5.5f + Vector3.right * .5f;
+        Vector3 raycastStartBack = transform.position - transform.forward * 5f + Vector3.right * .5f;
 
         // Lansează Raycast-ul din față
         bool frontHit = Physics.Raycast(raycastStartFront, Vector3.right, out hitFront, detectionDistance) && hitFront.collider.CompareTag("Vehicle");
@@ -167,8 +167,8 @@ public abstract class CarBehavior : MonoBehaviour
         Gizmos.DrawLine(raycastStartRight, raycastStartRight + transform.forward * detectionRange);
         
         float detectionDistance = 5f;  // Ajustează distanța dacă e nevoie
-        Vector3 raycastStartFront = transform.position + transform.forward * 2.5f + Vector3.right * .5f;
-        Vector3 raycastStartBack = transform.position - transform.forward * 2.5f + Vector3.right * .5f;
+        Vector3 raycastStartFront = transform.position + transform.forward * 5.5f + Vector3.right * .5f;
+        Vector3 raycastStartBack = transform.position - transform.forward * 5f + Vector3.right * .5f;
 
         // Setăm culoarea pentru Raycast-urile laterale dreapta
         Gizmos.color = Color.yellow;

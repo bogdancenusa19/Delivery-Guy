@@ -1023,13 +1023,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
-      propertyPath: stopDistance
+      propertyPath: forwardSpeed
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
+        type: 3}
+      propertyPath: stopDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: boostDuration
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
+        type: 3}
+      propertyPath: detectionRange
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
