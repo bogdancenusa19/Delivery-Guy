@@ -62,7 +62,7 @@ public class NPCarBehavior : CarBehavior
     private bool IsPlayerOnLeft()
     {
         RaycastHit hit;
-        Vector3 raycastStart = frontCarDetector.transform.position + Vector3.left * 0.5f; // Verifică în lateral stânga
+        Vector3 raycastStart = frontCarDetector.transform.position + Vector3.left * 1.5f; // Verifică în lateral stânga
 
         // Lansează un Raycast către stânga pentru a verifica dacă există un vehicul (playerul) în apropiere
         if (Physics.Raycast(raycastStart, Vector3.left, out hit, 5f)) // Folosim o distanță de 5 unități pentru detecție laterală
@@ -74,5 +74,17 @@ public class NPCarBehavior : CarBehavior
             }
         }
         return false;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        float detectionDistance = 5f; 
+        Vector3 raycastStart = frontCarDetector.transform.position + Vector3.left * 1.5f; // Verifică în lateral stânga
+        Gizmos.color = Color.black;
+
+        // Desenăm linia pentru Raycast-ul din față (dreapta)
+        Gizmos.DrawLine(raycastStart, raycastStart + Vector3.left * detectionDistance);
+        
     }
 }
