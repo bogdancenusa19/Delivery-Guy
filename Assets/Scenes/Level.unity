@@ -1024,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: stopDistance
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
@@ -1034,12 +1034,12 @@ PrefabInstance:
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: laneChangeDuration
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2642075495882116560, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
       propertyPath: minDistanceToBrake
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8253528900568412892, guid: 14c52436b9a5de540816dcb84099fc72,
         type: 3}
