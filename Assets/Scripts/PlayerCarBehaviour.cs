@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerCarBehavior : CarBehavior
@@ -10,6 +11,8 @@ public class PlayerCarBehavior : CarBehavior
     private bool cooldownActive = false;
     private float boostCooldownTimer = 0f;
 
+    private bool reachedDestination = false;
+
     protected override void Start()
     {
         base.Start();
@@ -19,6 +22,8 @@ public class PlayerCarBehavior : CarBehavior
     protected override void Update()
     {
         base.Update();
+
+        if (reachedDestination) return;
         
         // Verifică obstacolele în față și frânează prioritar
         float obstacleDistance;
@@ -117,5 +122,26 @@ public class PlayerCarBehavior : CarBehavior
         }
     }
 
+    public void StopAtDestination()
+    {
+        reachedDestination = true;
+        
+        // Trage pe dreapta
+        SetTargetLanePosition(-laneOffset);
 
+        // Începe reducerea vitezei până la oprire completă
+        StartCoroutine(SlowToStop());
+    }
+
+    private IEnumerator SlowToStop()
+    {
+        while (currentSpeed > 0)
+        {
+            currentSpeed -= .4f * brakeStrength  * Time.deltaTime;
+            yield return null;
+        }
+
+        currentSpeed = 0;
+        Debug.Log("Player has reached the destination and stopped!");
+    }
 }

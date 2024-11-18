@@ -14,7 +14,13 @@ public class EntranceChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.gameObject.CompareTag("Destination"))
+        {
+            other.GetComponent<PlayerCarBehavior>().StopAtDestination();
+        }
+        else if(other.CompareTag("Player"))
+        {
             mapGenerator.OnEnterZone();
+        }
     }
 }

@@ -1309,7 +1309,7 @@ GameObject:
   - component: {fileID: 5580865176362209468}
   - component: {fileID: 8910836374402960699}
   - component: {fileID: 6914883903872781876}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zone Enter Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
