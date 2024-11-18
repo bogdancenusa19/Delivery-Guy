@@ -6,8 +6,9 @@ using Random = UnityEngine.Random;
 public class DeliveryTimer : MonoBehaviour
 {
     private UIManager uiManager;
-    
-    private float timeToDestination = 30f; // 30 seconds until destination
+    private MapGenerator mapGenerator;
+
+    private float timeToDestination = 0;
     private float destinationTime;
     private float arrivalTime;
 
@@ -18,10 +19,15 @@ public class DeliveryTimer : MonoBehaviour
     private void Awake()
     {
         uiManager = GetComponent<UIManager>();
+        mapGenerator = FindObjectOfType<MapGenerator>().GetComponent<MapGenerator>();
     }
 
     void Start()
     {
+        
+        //TODO: DeliveryTimer + MapGenerater -> GameManager
+        timeToDestination = mapGenerator.targetIndex * 10;
+        Debug.Log("Destinatia este in " + timeToDestination);
         uiManager.UpdateDeadline(timeToDestination.ToString());
         
         // Generate random destination time between 17:00 and 18:00 (in minutes)

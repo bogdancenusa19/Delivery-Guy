@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public GameObject[] zones; // Array-ul cu zonele curente din scenă
-    public GameObject[] zonePrefabs; // Array cu prefabricatele posibile
+    [SerializeField] private GameObject[] zones; // Array-ul cu zonele curente din scenă
+    [SerializeField] private GameObject[] zonePrefabs; // Array cu prefabricatele posibile
+    [SerializeField] private GameObject[] destinationPrefabs; // Array cu prefabricatele pentru sectiuni de destinatie
+    [SerializeField] private int startIndex = 3; // Indexul minim de la care poate fi selectată destinația
+
     public float zoneLength = 143f; // Lungimea fixă a fiecărei zone
+    public int targetIndex { get; set; } // Indexul destinatiei
+    private int sectionCounter = 0;
 
     void Start()
     {
+        // Determină un index random pentru destinație
+        targetIndex = Random.Range(startIndex, 10); 
+        Debug.Log("Destinația a fost setată pe indexul: " + targetIndex);
+        
         // Calculează lungimea zonei pe baza distanței dintre primele două zone
         if (zones.Length > 1)
         {
@@ -41,8 +50,21 @@ public class MapGenerator : MonoBehaviour
 
     void SpawnNewZoneAtEnd()
     {
-        // Alege o zonă random din prefabricatele disponibile
-        GameObject newZonePrefab = zonePrefabs[Random.Range(0, zonePrefabs.Length)];
+        GameObject newZonePrefab;
+        sectionCounter++;
+
+        // Verifică dacă zona curentă este cea de pe indexul destinatiei
+        if (sectionCounter == targetIndex)
+        {
+            // Alege din prefabricatele pentru destinație
+            newZonePrefab = destinationPrefabs[Random.Range(0, destinationPrefabs.Length)];
+            Debug.Log("A fost instanțiată o zonă de destinație.");
+        }
+        else
+        {
+            // Alege o zonă random din prefabricatele clasice
+            newZonePrefab = zonePrefabs[Random.Range(0, zonePrefabs.Length)];
+        }
 
         // Determină poziția ultimei zone și adaugă lungimea fixă a zonei
         GameObject lastZone = zones[zones.Length - 2]; // Ultima zonă activă din array
