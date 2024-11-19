@@ -94,7 +94,6 @@ public class PlayerCarBehavior : CarBehavior
         if (IsVehicleOnRight(7f)) // Folosim o distanță de 7 unități pentru detecția vehiculelor din dreapta
         {
             Debug.Log($"{gameObject.name} is braking because there's a vehicle on the right, waiting to return to the lane.");
-           
         }
         else
         {

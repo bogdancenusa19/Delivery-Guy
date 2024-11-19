@@ -13,7 +13,7 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected Vector3 originalLanePosition;
     protected Vector3 targetLanePosition;
-    protected float currentSpeed;
+    public float currentSpeed;
     protected bool isOvertakingDone = false;
 
     protected virtual void Start()

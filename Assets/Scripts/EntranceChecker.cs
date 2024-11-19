@@ -5,22 +5,39 @@ using UnityEngine;
 
 public class EntranceChecker : MonoBehaviour
 {
-    private MapGenerator mapGenerator;
-
+    private GameManager _gameManager;
+    private bool playerAtDestination = false;
+    
     private void Start()
     {
-        mapGenerator = FindObjectOfType<MapGenerator>().GetComponent<MapGenerator>();
+        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+    }
+
+    private void Update()
+    {
+        if(playerAtDestination)
+            CheckIfParked();
+    }
+
+    private void CheckIfParked()
+    {
+        if (_gameManager.player.currentSpeed == 0)
+        {
+            _gameManager.hasReachedDestination = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && this.gameObject.CompareTag("Destination"))
         {
-            other.GetComponent<PlayerCarBehavior>().StopAtDestination();
+            playerAtDestination = true;
+            PlayerCarBehavior player = other.GetComponent<PlayerCarBehavior>();
+            player.StopAtDestination();
         }
         else if(other.CompareTag("Player"))
         {
-            mapGenerator.OnEnterZone();
+            _gameManager.OnEnterZone();
         }
     }
 }
