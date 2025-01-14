@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        uiManager.UpdateBoost(player.stamina);
         if(!tipsReceived && hasReachedDestination)
             GiveTip();
     }
@@ -56,15 +57,13 @@ public class GameManager : MonoBehaviour
     private void InitializeDestination()
     {
         targetIndex = Random.Range(startIndex, 10);
+        uiManager.UpdateArea(targetIndex);
         timeToDestination = targetIndex * 10;
         Debug.Log($"Destinatia este in {timeToDestination} secunde.");
 
-        uiManager.UpdateDeadline(timeToDestination.ToString());
-
         destinationTime = Random.Range(17f * 60, 18f * 60);
         string destinationTimeString = ConvertTimeToString(destinationTime);
-        uiManager.UpdateTime(destinationTimeString);
-
+        
         Debug.Log($"Destinația a fost setată pe indexul: {targetIndex}");
     }
 
@@ -134,7 +133,6 @@ public class GameManager : MonoBehaviour
         while (timeToDestination > 0f)
         {
             timeToDestination -= Time.deltaTime;
-            uiManager.UpdateDeadline(timeToDestination.ToString("F0"));
             yield return null;
         }
 
@@ -154,6 +152,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log($"You received ${tipOption.value} as a tip!");
                 uiManager.UpdateTips(tipOption.value.ToString());
+                PlayerPrefs.SetInt("cash",PlayerPrefs.GetInt("cash") + tipOption.value);
                 break;
             }
         }

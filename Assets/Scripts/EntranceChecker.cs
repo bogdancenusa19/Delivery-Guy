@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntranceChecker : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class EntranceChecker : MonoBehaviour
 
     private void Update()
     {
-        if(playerAtDestination)
+        if (playerAtDestination)
             CheckIfParked();
     }
 
@@ -24,20 +25,28 @@ public class EntranceChecker : MonoBehaviour
         if (_gameManager.player.currentSpeed == 0)
         {
             _gameManager.hasReachedDestination = true;
+            Invoke("GoToLobby", 1f);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && this.gameObject.CompareTag("Destination"))
-        {
-            playerAtDestination = true;
-            PlayerCarBehavior player = other.GetComponent<PlayerCarBehavior>();
-            player.StopAtDestination();
-        }
-        else if(other.CompareTag("Player"))
-        {
-            _gameManager.OnEnterZone();
-        }
+            if (other.CompareTag("Player") && this.gameObject.CompareTag("Destination"))
+            {
+                playerAtDestination = true;
+                PlayerCarBehavior player = other.GetComponent<PlayerCarBehavior>();
+                player.StopAtDestination();
+              
+            }
+            else if(other.CompareTag("Player"))
+            {
+                _gameManager.OnEnterZone();
+            }
+            
+    }
+
+    private void GoToLobby()
+    {
+        SceneManager.LoadScene(0);
     }
 }

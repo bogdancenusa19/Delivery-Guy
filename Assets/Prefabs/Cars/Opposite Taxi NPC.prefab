@@ -706,8 +706,8 @@ GameObject:
   - component: {fileID: 555197382426355495}
   - component: {fileID: 6452159085116566546}
   m_Layer: 0
-  m_Name: Back NPC Car
-  m_TagString: Vehicle
+  m_Name: Opposite Taxi NPC
+  m_TagString: VehicleOpposite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -720,7 +720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5628232912673616689}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 3.08, y: -0.04, z: 17.9}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -728,7 +728,7 @@ Transform:
   - {fileID: 1038733918249918749}
   - {fileID: 771184603911300819}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &7488144828799418619
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -770,6 +770,7 @@ MonoBehaviour:
   brakeStrength: 5
   minDistanceToBrake: 15
   stopDistance: 5
+  currentSpeed: 0
   behaviorChangeInterval: 5
   minSpeed: 10
   maxSpeed: 10

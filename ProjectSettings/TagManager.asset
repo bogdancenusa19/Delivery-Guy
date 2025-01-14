@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vehicle
   - Destination
+  - VehicleOpposite
   layers:
   - Default
   - TransparentFX
