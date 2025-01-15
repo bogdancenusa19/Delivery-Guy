@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerCarBehavior : CarBehavior
 {
+    [Header("Player Specs")] 
     public float boostDuration = 3f;
     [SerializeField] private float cooldownTime = 5f;
     public float stamina = 3f;
@@ -25,7 +26,6 @@ public class PlayerCarBehavior : CarBehavior
 
         if (reachedDestination) return;
         
-        // Verifică obstacolele în față și frânează prioritar
         float obstacleDistance;
         if (IsObstacleInFront(out obstacleDistance) && obstacleDistance < minDistanceToBrake)
         {
@@ -34,14 +34,12 @@ public class PlayerCarBehavior : CarBehavior
         }
         else
         {
-            // Dacă nu există obstacole, accelerează treptat până la viteza inițială
             if (currentSpeed < forwardSpeed)
             {
                 AccelerateToDefault();
             }
         }
         
-        // Controlează boost-ul prin input doar dacă nu există obstacole în față
         if (Input.GetMouseButton(0) && stamina > 0)
         {
             StartBoost();
@@ -60,8 +58,6 @@ public class PlayerCarBehavior : CarBehavior
         
     }
 
-
-
     private void StartBoost()
     {
         isBoosting = true;
@@ -72,7 +68,6 @@ public class PlayerCarBehavior : CarBehavior
         float distance;
         if (IsObstacleInFront(out distance))
         {
-            // Setează ținta pe contrasens
             isOvertakingDone = false;
             SetTargetLanePosition(laneOffset);
         }
@@ -95,10 +90,8 @@ public class PlayerCarBehavior : CarBehavior
 
     private void HandleCooldownAndRecharge()
     {
-        // Verifică dacă playerul a revenit pe banda inițială înainte de a reîncărca stamina
         if (cooldownActive)
         {
-            // Reîncarcă stamina progresiv
             stamina = Mathf.Min(stamina + Time.deltaTime, boostDuration);
             
             if (stamina == boostDuration)
@@ -112,10 +105,8 @@ public class PlayerCarBehavior : CarBehavior
     {
         reachedDestination = true;
         
-        // Trage pe dreapta
         SetTargetLanePosition(-laneOffset);
-
-        // Începe reducerea vitezei până la oprire completă
+        
         StartCoroutine(SlowToStop());
     }
 
@@ -123,7 +114,7 @@ public class PlayerCarBehavior : CarBehavior
     {
         while (currentSpeed > 0)
         {
-            currentSpeed -= .4f * brakeStrength  * Time.deltaTime;
+            currentSpeed -= .1f * brakeStrength  * Time.deltaTime;
             yield return null;
         }
 

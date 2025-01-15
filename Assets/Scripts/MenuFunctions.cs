@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class MenuFunctions : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI cash;
+    [SerializeField] private GameObject howToPlayCanvas;
 
     private void Start()
     {
@@ -17,6 +18,12 @@ public class MenuFunctions : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void HowToPlay()
+    {
+        this.gameObject.SetActive(false);
+        howToPlayCanvas.SetActive(true);
     }
 
     public void ExitGame()

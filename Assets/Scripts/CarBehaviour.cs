@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class CarBehavior : MonoBehaviour
@@ -10,11 +11,21 @@ public abstract class CarBehavior : MonoBehaviour
     public float brakeStrength = 5f;
     public float minDistanceToBrake = 5f;
     public float stopDistance = 2f;
+    private bool isBraking = false;
+    private float lastSpeed = 0f;
 
     protected Vector3 originalLanePosition;
     protected Vector3 targetLanePosition;
     public float currentSpeed;
     protected bool isOvertakingDone = false;
+
+    [Header("Lights")] 
+    public GameObject car;
+    public Material lightsOff;
+
+    public Material lightsOn;
+    
+    
 
     protected virtual void Start()
     {
@@ -31,13 +42,11 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected void MoveForward()
     {
-        // Mișcare constantă pe direcția înainte (Z)
         transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
     }
 
     protected void SmoothLaneChange()
     {
-        // Tranziție lină doar pe direcția X, fără a afecta viteza pe Z
         float step = currentSpeed * Time.deltaTime / laneChangeDuration;
         Vector3 newPosition = new Vector3(targetLanePosition.x, transform.position.y, transform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
@@ -51,13 +60,11 @@ public abstract class CarBehavior : MonoBehaviour
 
         distance = detectionRange;
         bool obstacleDetected = false;
-
-        // Definim punctele de pornire pentru cele trei raze: centru, stânga și dreapta
+        
         Vector3 raycastStartCenter = transform.position;
         Vector3 raycastStartLeft = transform.position + Vector3.left * 2f;
         Vector3 raycastStartRight = transform.position + Vector3.right * 2f;
-
-        // Verificăm pentru fiecare rază dacă există obstacole
+        
         if (Physics.Raycast(raycastStartCenter, transform.forward, out hitCenter, detectionRange))
         {
             //Debug.Log($"{gameObject.name} center ray hit {hitCenter.collider.tag} at distance {hitCenter.distance}");
@@ -88,11 +95,6 @@ public abstract class CarBehavior : MonoBehaviour
             }
         }
 
-        if (!obstacleDetected)
-        {
-            Debug.Log($"{gameObject.name} found no obstacles in front.");
-        }
-
         return obstacleDetected;
     }
     
@@ -109,7 +111,36 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected void Brake()
     {
+        if (currentSpeed > lastSpeed + 2f)
+        {
+            isBraking = false; 
+        }
+        
+        if (!isBraking)
+        {
+            StartCoroutine(TurnLightsOn());
+            isBraking = true;
+        }
+        
         currentSpeed = Mathf.Max(0, currentSpeed - brakeStrength * Time.deltaTime);
+        
+        lastSpeed = currentSpeed;
+    }
+    
+    private IEnumerator TurnLightsOn()
+    {
+        float timePassed = 0f;
+        Material currentMaterial = car.GetComponent<Renderer>().material;
+        
+        while (timePassed < 1.5f)
+        {
+           timePassed += Time.deltaTime;
+           car.GetComponent<Renderer>().material = lightsOn;
+           
+           yield return null;
+        }
+        
+        car.GetComponent<Renderer>().material = lightsOff;
     }
 
     protected void AccelerateToDefault()
@@ -127,18 +158,14 @@ public abstract class CarBehavior : MonoBehaviour
     {
         RaycastHit hitFront;
         RaycastHit hitBack;
-    
-        // Pozițiile de start pentru Raycast-uri
+        
         Vector3 raycastStartFront = transform.position + transform.forward * 5.5f + Vector3.right * .5f;
         Vector3 raycastStartBack = transform.position - transform.forward * 5f + Vector3.right * .5f;
-
-        // Lansează Raycast-ul din față
+        
         bool frontHit = Physics.Raycast(raycastStartFront, Vector3.right, out hitFront, detectionDistance) && hitFront.collider.CompareTag("Vehicle");
-
-        // Lansează Raycast-ul din spate
+        
         bool backHit = Physics.Raycast(raycastStartBack, Vector3.right, out hitBack, detectionDistance) && hitBack.collider.CompareTag("Vehicle");
-
-        // Verifică dacă oricare dintre Raycast-uri a detectat un vehicul
+        
         if (frontHit || backHit)
         {
             Debug.Log($"{gameObject.name} detected a vehicle on the right at distance {detectionDistance}");
@@ -150,13 +177,11 @@ public abstract class CarBehavior : MonoBehaviour
 
     protected virtual void OnDrawGizmos()
     {
-
-        // Definim punctele de pornire pentru cele trei raze: centru, stânga și dreapta
+        
         Vector3 raycastStartCenter = transform.position + transform.forward * 3f;
         Vector3 raycastStartLeft = transform.position + Vector3.left * 2f + transform.forward * 3f;
         Vector3 raycastStartRight = transform.position + Vector3.right * 2f + transform.forward * 3f;
-
-        // Setăm culori pentru fiecare rază
+        
         Gizmos.color = Color.red;
         Gizmos.DrawLine(raycastStartCenter, raycastStartCenter + transform.forward * detectionRange);
 
@@ -166,17 +191,14 @@ public abstract class CarBehavior : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(raycastStartRight, raycastStartRight + transform.forward * detectionRange);
         
-        float detectionDistance = 5f;  // Ajustează distanța dacă e nevoie
+        float detectionDistance = 5f;
         Vector3 raycastStartFront = transform.position + transform.forward * 5.5f + Vector3.right * .5f;
         Vector3 raycastStartBack = transform.position - transform.forward * 5f + Vector3.right * .5f;
-
-        // Setăm culoarea pentru Raycast-urile laterale dreapta
+        
         Gizmos.color = Color.yellow;
-
-        // Desenăm linia pentru Raycast-ul din față (dreapta)
+        
         Gizmos.DrawLine(raycastStartFront, raycastStartFront + Vector3.right * detectionDistance);
-
-        // Desenăm linia pentru Raycast-ul din spate (dreapta)
+        
         Gizmos.DrawLine(raycastStartBack, raycastStartBack + Vector3.right * detectionDistance);
 
     }

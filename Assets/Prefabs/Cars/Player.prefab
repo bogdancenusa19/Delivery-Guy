@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 8009002572413341353}
   - component: {fileID: 6066032897281143436}
   - component: {fileID: 2642075495882116560}
+  - component: {fileID: 4754040579912518522}
+  - component: {fileID: 3989026407651343474}
+  - component: {fileID: 555508196604327381}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -95,16 +98,147 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71439190fc9ec0408eb4d68cec7ffdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 10
-  boostSpeed: 20
-  laneOffset: -5
-  detectionRange: 15
-  laneChangeDuration: 3
+  forwardSpeed: 12
+  boostSpeed: 25
+  laneOffset: -8
+  detectionRange: 20
+  laneChangeDuration: 1.5
   brakeStrength: 5
-  minDistanceToBrake: 12
-  stopDistance: 8
-  boostDuration: 2
+  minDistanceToBrake: 18
+  stopDistance: 10
+  currentSpeed: 0
+  car: {fileID: 7663636681246616032}
+  lightsOff: {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
+  lightsOn: {fileID: 2100000, guid: f55736f08ea3d3d43b6c45d315668507, type: 2}
+  boostDuration: 3
   cooldownTime: 1
+  stamina: 3
+--- !u!114 &4754040579912518522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069937143860932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f5f1fcee7d67b4e9bd25ed1b91769d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSfx: {fileID: 0}
+--- !u!82 &3989026407651343474
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069937143860932}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 84927f0eac14e3545ba5382b252f63b6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.05
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &555508196604327381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069937143860932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32e326de80397c4d934305ae968712b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 3989026407651343474}
+  engineLoopClip: {fileID: 8300000, guid: 84927f0eac14e3545ba5382b252f63b6, type: 3}
+  accelerationClip: {fileID: 8300000, guid: 2aa5dec2b9835f042b63a3b016e857df, type: 3}
+  accelerationPitchIncrease: 1.5
+  reversePitchDecreaseSpeed: 2
 --- !u!1 &704223027683988392
 GameObject:
   m_ObjectHideFlags: 0

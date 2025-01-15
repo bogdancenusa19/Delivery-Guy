@@ -20,8 +20,7 @@ public class NPCarBehavior : CarBehavior
     {
         base.Update();
         HandleTraffic();
-
-        // Schimbă comportamentul aleatoriu la fiecare interval
+        
         behaviorChangeTimer -= Time.deltaTime;
         if (behaviorChangeTimer <= 0f)
         {
@@ -32,29 +31,27 @@ public class NPCarBehavior : CarBehavior
 
     private void SetRandomSpeed()
     {
-        // Alege o viteză aleatorie între minSpeed și maxSpeed
         currentSpeed = Random.Range(minSpeed, maxSpeed);
     }
 
     private void HandleTraffic()
     {
         float distance;
-        if (IsObstacleInFront(out distance) || IsPlayerOnLeft()) // Verifică obstacolele în față sau playerul în stânga
+        if (IsObstacleInFront(out distance) || IsPlayerOnLeft())
         {
-            if (distance < stopDistance || IsPlayerOnLeft()) // Aplică frânarea și pentru playerul din stânga
+            if (distance < stopDistance || IsPlayerOnLeft())
             {
                 Debug.Log($"{gameObject.name} is braking immediately due to a close obstacle or player on the left.");
-                currentSpeed = 0; // Oprire completă dacă obstacolul este extrem de aproape sau dacă playerul este în stânga
+                currentSpeed = 0;
             }
             else if (distance < minDistanceToBrake)
             {
                 Debug.Log($"{gameObject.name} is braking progressively.");
-                Brake(); // Frânare treptată pentru a menține o distanță de siguranță
+                Brake();
             }
         }
         else
         {
-            // Revine la viteza normală dacă drumul e liber
             AccelerateToDefault();
         }
     }

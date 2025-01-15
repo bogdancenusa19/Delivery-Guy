@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CrashChecker : MonoBehaviour
 {
+    [SerializeField] private LevelSFX levelSfx;
     private int lives = 3;
     private void OnCollisionEnter(Collision other)
     {
@@ -16,6 +17,7 @@ public class CrashChecker : MonoBehaviour
         else if (other.gameObject.CompareTag("Vehicle"))
         {
             lives--;
+            levelSfx.PlayHornClip();
             
             if (lives == 0)
             {
@@ -27,5 +29,10 @@ public class CrashChecker : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public int GetLives()
+    {
+        return lives;
     }
 }

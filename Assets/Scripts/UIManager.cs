@@ -9,7 +9,10 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tips;
     [SerializeField] private TextMeshProUGUI areaStop;
+    [SerializeField] private TextMeshProUGUI time;
+    [SerializeField] private TextMeshProUGUI currentArea;
     [SerializeField] private Slider boost;
+    
 
     private int currentAreasNumber = 3;
 
@@ -32,5 +35,15 @@ public class UIManager : MonoBehaviour
     public void UpdateBoost(float value)
     {
         boost.value = value;
+    }
+
+    public void UpdateTime(float value)
+    {
+        time.text = value.ToString("F0");
+    }
+
+    public void UpdateCurrentArea(int value)
+    {
+        currentArea.text = "Current: " + value.ToString();
     }
 }

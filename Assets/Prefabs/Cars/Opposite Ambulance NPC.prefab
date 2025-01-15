@@ -578,6 +578,9 @@ MonoBehaviour:
   minDistanceToBrake: 12
   stopDistance: 5
   currentSpeed: 0
+  car: {fileID: 8761884893095035791}
+  lightsOff: {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
+  lightsOn: {fileID: 2100000, guid: f55736f08ea3d3d43b6c45d315668507, type: 2}
   behaviorChangeInterval: 5
   minSpeed: 1
   maxSpeed: 1

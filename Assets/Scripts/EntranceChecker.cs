@@ -25,7 +25,7 @@ public class EntranceChecker : MonoBehaviour
         if (_gameManager.player.currentSpeed == 0)
         {
             _gameManager.hasReachedDestination = true;
-            Invoke("GoToLobby", 1f);
+            Invoke("GoToLobby", 2f);
         }
     }
 
@@ -41,6 +41,7 @@ public class EntranceChecker : MonoBehaviour
             else if(other.CompareTag("Player"))
             {
                 _gameManager.OnEnterZone();
+                _gameManager.EnterNewArea();
             }
             
     }

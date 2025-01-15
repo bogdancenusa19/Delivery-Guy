@@ -11,29 +11,31 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PlayerCarBehavior player;
 
     [Header("Delivery Settings")]
-    [SerializeField] private int startIndex = 3; // Indexul minim de la care poate fi selectată destinația
-    public int targetIndex { get; private set; } // Indexul destinației
-    private float timeToDestination = 0; // Timpul alocat pentru a ajunge la destinație
-    private float destinationTime; // Ora destinației în minute
-    private float arrivalTime; // Timpul efectiv de sosire
+    [SerializeField] private int startIndex = 3;
+    public int targetIndex { get; private set; }
+    private float timeToDestination = 0; 
+    private float destinationTime;
+    private float arrivalTime; 
+    private float helpTime = 20f;
+    private int currentArea = 1;
 
     [System.Serializable] public struct TipOption
     {
-        public float percentage; // Procentajul șansei
-        public int value;        // Valoarea bacșișului
+        public float percentage; 
+        public int value;
     }
 
     [Header("Tip Calculation")]
-    [SerializeField] private TipOption[] tipOptions; // Opțiuni pentru bacșiș
+    [SerializeField] private TipOption[] tipOptions; 
     public bool hasReachedDestination { get; set; } = false;
     private bool tipsReceived = false;
 
     [Header("Map Settings")]
-    [SerializeField] private GameObject[] zones; // Array-ul cu zonele curente din scenă
-    [SerializeField] private GameObject[] zonePrefabs; // Prefabricatele pentru zone clasice
-    [SerializeField] private GameObject[] destinationPrefabs; // Prefabricatele pentru secțiuni de destinație
-    [SerializeField] private float zoneLength = 99f; // Lungimea fixă a fiecărei zone
-    private int sectionCounter = 0; // Contor pentru secțiuni generate
+    [SerializeField] private GameObject[] zones;
+    [SerializeField] private GameObject[] zonePrefabs; 
+    [SerializeField] private GameObject[] destinationPrefabs;
+    [SerializeField] private float zoneLength = 99f;
+    private int sectionCounter = 0;
 
     private void Awake()
     {
@@ -49,22 +51,30 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        uiManager.UpdateBoost(player.stamina);
+        UpdateUI();
+        
         if(!tipsReceived && hasReachedDestination)
             GiveTip();
+    }
+
+    private void UpdateUI()
+    {
+        uiManager.UpdateBoost(player.stamina);
+        uiManager.UpdateTime(timeToDestination);
+        uiManager.UpdateCurrentArea(currentArea);
     }
 
     private void InitializeDestination()
     {
         targetIndex = Random.Range(startIndex, 10);
         uiManager.UpdateArea(targetIndex);
-        timeToDestination = targetIndex * 10;
+        timeToDestination = targetIndex * 7 + helpTime;
         Debug.Log($"Destinatia este in {timeToDestination} secunde.");
 
         destinationTime = Random.Range(17f * 60, 18f * 60);
         string destinationTimeString = ConvertTimeToString(destinationTime);
         
-        Debug.Log($"Destinația a fost setată pe indexul: {targetIndex}");
+        Debug.Log($"Destinatia a fost setata pe indexul: {targetIndex}");
     }
 
     private void InitializeMapZones()
@@ -73,12 +83,7 @@ public class GameManager : MonoBehaviour
         {
             zoneLength = zones[1].transform.position.z - zones[0].transform.position.z;
         }
-        else
-        {
-            Debug.LogWarning("Nu sunt suficiente zone pentru a calcula lungimea.");
-        }
     }
-
     private string ConvertTimeToString(float timeInMinutes)
     {
         int hours = Mathf.FloorToInt(timeInMinutes / 60);
@@ -111,7 +116,6 @@ public class GameManager : MonoBehaviour
         if (sectionCounter == targetIndex)
         {
             newZonePrefab = destinationPrefabs[Random.Range(0, destinationPrefabs.Length)];
-            Debug.Log($"A fost instanțiată o zonă de destinație la secțiunea {sectionCounter}.");
         }
         else
         {
@@ -156,5 +160,10 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void EnterNewArea()
+    {
+        currentArea++;
     }
 }
